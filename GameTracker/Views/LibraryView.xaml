@@ -46,7 +46,7 @@
                                 <Setter Property="TextColor" Value="#777" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="All">
-                                        <Setter Property="TextColor" Value="White" />
+                                        <Setter Property="TextColor" Value="Black" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -77,7 +77,7 @@
                                 <Setter Property="TextColor" Value="#777" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Playing">
-                                        <Setter Property="TextColor" Value="White" />
+                                        <Setter Property="TextColor" Value="Black" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -108,7 +108,7 @@
                                 <Setter Property="TextColor" Value="#777" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Completed">
-                                        <Setter Property="TextColor" Value="White" />
+                                        <Setter Property="TextColor" Value="Black" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -139,7 +139,7 @@
                                 <Setter Property="TextColor" Value="#777" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Plan to Play">
-                                        <Setter Property="TextColor" Value="White" />
+                                        <Setter Property="TextColor" Value="Black" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
