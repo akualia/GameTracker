@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="GameTracker" mvid="1def3120fb6d4725818209f606a716ff">
+  <java-to-managed>
+    <entry java-name="crc64f37c224512d282a1/MainActivity" managed-name="GameTracker.MainActivity, GameTracker" managed-type-token-id="33554441" />
+    <entry java-name="crc64f37c224512d282a1/MainApplication" managed-name="GameTracker.MainApplication, GameTracker" managed-type-token-id="33554442" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc64f37c224512d282a1/MainActivity" managed-name="GameTracker.MainActivity, GameTracker" managed-type-token-id="33554441" />
+    <entry java-name="crc64f37c224512d282a1/MainApplication" managed-name="GameTracker.MainApplication, GameTracker" managed-type-token-id="33554442" />
+  </managed-to-java>
+</api>

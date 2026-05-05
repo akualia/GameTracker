@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:GameTracker.Models"
+             xmlns:viewmodels="clr-namespace:GameTracker.ViewModels"
+             x:Class="GameTracker.Views.LibraryView"
+             x:DataType="viewmodels:LibraryViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#06142E">
+
+    <Grid RowDefinitions="Auto, Auto, *">
+
+        <Border Grid.Row="0" BackgroundColor="#0A1C40" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,30,30" Padding="20,40,20,25">
+            <Border.Shadow>
+                <Shadow Brush="#000000" Offset="0,5" Opacity="0.3" Radius="10"/>
+            </Border.Shadow>
+            <VerticalStackLayout Spacing="5">
+                <Label Text="🌙 My Library" FontSize="32" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                <Label Text="คลังแสงส่วนตัว จัดการเกมที่คุณรัก" FontSize="14" TextColor="#A0AABF" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <ScrollView Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="15,20,15,10">
+            <HorizontalStackLayout Spacing="15">
+
+                <VerticalStackLayout Spacing="8">
+                    <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BackgroundColor" Value="#223359" />
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="All">
+                                        <Setter Property="BackgroundColor" Value="#7A75FF" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="All"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="🗂️" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Label Text="All" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="#A0AABF" />
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="All">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="8">
+                    <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BackgroundColor" Value="#223359" />
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Playing">
+                                        <Setter Property="BackgroundColor" Value="#7A75FF" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Playing"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="▶️" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Label Text="Playing" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="#A0AABF" />
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Playing">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="8">
+                    <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BackgroundColor" Value="#223359" />
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Completed">
+                                        <Setter Property="BackgroundColor" Value="#7A75FF" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Completed"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="✅" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Label Text="Completed" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="#A0AABF" />
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Completed">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="8">
+                    <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BackgroundColor" Value="#223359" />
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Plan to Play">
+                                        <Setter Property="BackgroundColor" Value="#7A75FF" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Plan to Play"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="📌" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Label Text="Wishlist" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="#A0AABF" />
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Plan to Play">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <CollectionView Grid.Row="2" ItemsSource="{Binding MyGames}" Margin="15,10,15,20">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Game">
+                    <VerticalStackLayout>
+                        <Border BackgroundColor="#11224D" StrokeShape="RoundRectangle 15" Stroke="#1B3066" StrokeThickness="1">
+                            <Border.Shadow>
+                                <Shadow Brush="#000000" Offset="0,6" Opacity="0.4" Radius="10"/>
+                            </Border.Shadow>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LibraryViewModel}}, Path=GameTappedCommand}" CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+
+                            <Grid RowDefinitions="140, Auto">
+                                <Image Grid.Row="0" Source="{Binding BackgroundImage}" Aspect="AspectFill" />
+
+                                <Border Grid.Row="0" HorizontalOptions="End" VerticalOptions="Start" Margin="8" 
+                                        BackgroundColor="#E63946" Stroke="Transparent" StrokeShape="RoundRectangle 8" Padding="8,4">
+                                    <Label Text="{Binding PlayStatus}" TextColor="White" FontSize="10" FontAttributes="Bold"/>
+                                </Border>
+
+                                <VerticalStackLayout Grid.Row="1" Padding="12" Spacing="4">
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="White" FontSize="14" LineBreakMode="TailTruncation" MaxLines="1"/>
+
+                                    <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                                        <Label Text="⭐" FontSize="11" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Rating}" TextColor="#A0AABF" FontSize="11" VerticalOptions="Center"/>
+                                        <Label Text="|" TextColor="#A0AABF" FontSize="11" VerticalOptions="Center"/>
+                                        <Label Text="Prog: " TextColor="#A0AABF" FontSize="11" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Progress}" TextColor="#00FF7F" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
+                                        <Label Text="%" TextColor="#00FF7F" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

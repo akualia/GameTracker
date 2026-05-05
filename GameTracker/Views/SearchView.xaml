@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameTracker.Views.SearchView"
+             Shell.NavBarIsVisible="False" 
+             BackgroundColor="#06142E">
+
+    <Grid RowDefinitions="Auto, Auto, *" Padding="15,20,15,0">
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *" Margin="0,0,0,20">
+            <Border Grid.Column="0" StrokeShape="RoundRectangle 25" WidthRequest="50" HeightRequest="50" BackgroundColor="White" Stroke="Transparent" VerticalOptions="Center">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                </Border.GestureRecognizers>
+                <Label Text="←" FontSize="24" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+
+            <Label Grid.Column="1" Text="Searching" FontSize="28" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Margin="-50,0,0,0"/>
+        </Grid>
+
+        <Border Grid.Row="1" StrokeShape="RoundRectangle 10" BackgroundColor="White" Stroke="Transparent" Padding="15,5" Margin="0,0,0,15">
+            <Grid ColumnDefinitions="*, Auto">
+                <Entry Grid.Column="0" 
+                       Placeholder="ค้นหาเกม..." 
+                       Text="{Binding SearchQuery}" 
+                       ReturnCommand="{Binding SearchCommand}" 
+                       TextColor="Black" 
+                       BackgroundColor="Transparent" 
+                       ClearButtonVisibility="WhileEditing"/>
+
+                <Label Grid.Column="1" Text="🔍" FontSize="20" VerticalOptions="Center" TextColor="Gray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SearchCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </Border>
+
+        <ActivityIndicator Grid.Row="2" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Start" Color="White" Margin="0,20,0,0"/>
+
+        <CollectionView Grid.Row="2" 
+                        ItemsSource="{Binding SearchResults}" 
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding GameTappedCommand}"
+                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Border StrokeShape="RoundRectangle 10" Stroke="Transparent" HeightRequest="130">
+                            <Image Source="{Binding BackgroundImage}" Aspect="AspectFill" />
+                        </Border>
+                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="White" Margin="0,8,0,2" LineBreakMode="TailTruncation" MaxLines="1"/>
+                        <Label Text="45 MIN • RECENTLY PLAYED" FontSize="9" TextColor="#888" LineBreakMode="TailTruncation"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
