@@ -7,3 +7,7 @@ GameTracker/obj/
 .vscode/
 *.user
 *.suo
+
+# Configuration
+appsettings.json
+config.json
