@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="GameTracker.SplashPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,1">
+            <GradientStop Color="#1a1a2e"
+                          Offset="0.0" />
+            <GradientStop Color="#16213e"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="*,auto"
+          ColumnDefinitions="*"
+          Padding="20"
+          RowSpacing="20"
+          ColumnSpacing="20">
+
+        <!-- Lottie Animation -->
+        <skia:SKLottieView Grid.Row="0"
+                           Grid.Column="0"
+                           Source="resources/raw/splash.json"
+                           RepeatCount="-1"
+                           WidthRequest="300"
+                           HeightRequest="300"
+                           IsAnimationEnabled="True"
+                           VerticalOptions="End"
+                           HorizontalOptions="Center" />
+
+        <!-- Center Content -->
+        <VerticalStackLayout Grid.Row="1"
+                             Grid.Column="0"
+                             Spacing="15"
+                             HorizontalOptions="Center">
+            <Label Text="GameTracker"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#FFFFFF" />
+
+            <Label Text="กำลังโหลดข้อมูล..."
+                   FontSize="14"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#B0B0B0"
+                   Margin="0,5,0,15" />
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator IsRunning="True"
+                               IsVisible="True"
+                               Color="#0D9488"
+                               Scale="1.2" />
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

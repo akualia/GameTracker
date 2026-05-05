@@ -16,26 +16,30 @@ namespace GameTracker.ViewModels
         private string _searchQuery;
         private bool _isLoading;
 
-        // ตัวแปรนี้จะเก็บรายชื่อเกมที่ค้นหาเจอ และนำไปโชว์บนหน้าจออัตโนมัติ
+        // Collection that holds search results and updates the UI automatically
         public ObservableCollection<Game> SearchResults { get; set; } = new ObservableCollection<Game>();
 
-        // ข้อความที่ผู้ใช้พิมพ์ในช่องค้นหา
+        // User input from the search bar
         public string SearchQuery
         {
             get => _searchQuery;
             set { _searchQuery = value; OnPropertyChanged(nameof(SearchQuery)); }
         }
 
-        // สถานะตอนกำลังโหลดข้อมูล (เพื่อโชว์ไอคอนหมุนๆ)
+        // Indicates whether data is currently being loaded (used for loading indicators)
         public bool IsLoading
         {
             get => _isLoading;
             set { _isLoading = value; OnPropertyChanged(nameof(IsLoading)); }
         }
 
-        // คำสั่งเมื่อกดปุ่มค้นหา
+        // Command triggered when the search button is pressed
         public ICommand SearchCommand { get; }
+
+        // Command triggered when a game is selected
         public ICommand GameTappedCommand { get; }
+
+        // Command to navigate back to the previous page
         public ICommand GoBackCommand { get; }
 
         public SearchViewModel(RawgApiService apiService)
@@ -46,17 +50,18 @@ namespace GameTracker.ViewModels
             GameTappedCommand = new Command<Game>(async (game) => await GoToGameDetail(game));
         }
 
+        // Performs search using the API and updates the results list
         private async Task PerformSearch()
         {
             if (string.IsNullOrWhiteSpace(SearchQuery)) return;
 
             IsLoading = true;
-            SearchResults.Clear(); 
+            SearchResults.Clear();   // Clear previous results
 
-            // ดึงข้อมูลจาก API
+            // Fetch data from API
             var results = await _apiService.SearchGamesAsync(SearchQuery);
 
-            // นำข้อมูลที่ได้มาใส่ใน List
+            // Populate the collection with new results
             foreach (var game in results)
             {
                 SearchResults.Add(game);
@@ -64,21 +69,23 @@ namespace GameTracker.ViewModels
 
             IsLoading = false;
         }
+
+        // Navigates to GameDetailView with the selected game
         private async Task GoToGameDetail(Game selectedGame)
         {
             if (selectedGame == null) return;
 
-            // สร้างข้อมูลที่จะส่งข้ามหน้าจอ
+            // Create navigation parameters
             var navigationParameter = new Dictionary<string, object>
     {
         { "Game", selectedGame }
     };
 
-            // สั่งนำทางไปยังหน้า GameDetailView พร้อมแนบข้อมูลเกมไป
+            // Navigate to GameDetailView with the selected game
             await Shell.Current.GoToAsync(nameof(Views.GameDetailView), navigationParameter);
         }
 
-        // โค้ดส่วนนี้ช่วยให้หน้าจออัปเดตอัตโนมัติเมื่อข้อมูลเปลี่ยน
+        // Notifies UI when a property value changes
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

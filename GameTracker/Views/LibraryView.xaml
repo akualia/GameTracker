@@ -8,45 +8,96 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="#FFFFFF">
 
+    <!-- Main layout grid -->
     <Grid RowDefinitions="Auto, Auto, *">
 
-        <Border Grid.Row="0" BackgroundColor="#F9F9FB" Stroke="#F0F0F0" StrokeThickness="1" StrokeShape="RoundRectangle 0,0,30,30" Padding="20,40,20,25">
+        <!-- Header section -->
+        <Border Grid.Row="0"
+                BackgroundColor="#F9F9FB"
+                Stroke="#F0F0F0"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 0,0,30,30"
+                Padding="20,40,20,25">
+
+            <!-- Soft shadow effect -->
             <Border.Shadow>
-                <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
+                <Shadow Brush="#000000"
+                        Offset="0,3"
+                        Opacity="0.05"
+                        Radius="5" />
             </Border.Shadow>
+            
             <VerticalStackLayout Spacing="5">
-                <Label Text="🌙 My Library" FontSize="32" FontAttributes="Bold" TextColor="#3A3A4D" HorizontalOptions="Center"/>
-                <Label Text="คลังแสงส่วนตัว จัดการเกมที่คุณรัก" FontSize="14" TextColor="#A0A0B3" HorizontalOptions="Center"/>
+                <Label Text="🌙 My Library"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="#3A3A4D"
+                       HorizontalOptions="Center" />
+
+                <!-- Subtitle -->
+                <Label Text="คลังแสงส่วนตัว จัดการเกมที่คุณรัก"
+                       FontSize="14"
+                       TextColor="#A0A0B3"
+                       HorizontalOptions="Center" />
             </VerticalStackLayout>
         </Border>
 
-        <ScrollView Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="15,20,15,10">
+        <!-- Horizontal filter bar -->
+        <ScrollView Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalScrollBarVisibility="Never"
+                    Padding="15,20,15,10">
             <HorizontalStackLayout Spacing="15">
 
+                <!-- Filter: All -->
                 <VerticalStackLayout Spacing="8">
-                    <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
+                    <Border StrokeShape="RoundRectangle 25"
+                            WidthRequest="55"
+                            HeightRequest="55"
+                            Stroke="Transparent">
+
+                        <!-- Dynamic background based on selected filter -->
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BackgroundColor" Value="#F0F0F0" />
+                                <Setter Property="BackgroundColor"
+                                        Value="#F0F0F0" />
                                 <Style.Triggers>
-                                    <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="All">
-                                        <Setter Property="BackgroundColor" Value="#7A75FF" />
+                                    <DataTrigger TargetType="Border"
+                                                 Binding="{Binding CurrentFilter}"
+                                                 Value="All">
+                                        <Setter Property="BackgroundColor"
+                                                Value="#7A75FF" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
+
+                        <!-- Dynamic background based on selected filter -->
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="All"/>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}"
+                                                  CommandParameter="All" />
                         </Border.GestureRecognizers>
-                        <Label Text="🗂️" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="🗂️"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
                     </Border>
-                    <Label Text="All" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
+
+                    <!-- Label with dynamic color -->
+                    <Label Text="All"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center">
                         <Label.Style>
                             <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#777" />
+                                <Setter Property="TextColor"
+                                        Value="#777" />
                                 <Style.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="All">
-                                        <Setter Property="TextColor" Value="Black" />
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding CurrentFilter}"
+                                                 Value="All">
+                                        <Setter Property="TextColor"
+                                                Value="Black" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -54,30 +105,50 @@
                     </Label>
                 </VerticalStackLayout>
 
+                <!-- Filter: Playing -->
+                <!-- Same structure as above, changes based on CurrentFilter -->
                 <VerticalStackLayout Spacing="8">
-                    <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
+                    <Border StrokeShape="RoundRectangle 25"
+                            WidthRequest="55"
+                            HeightRequest="55"
+                            Stroke="Transparent">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BackgroundColor" Value="#F0F0F0" />
+                                <Setter Property="BackgroundColor"
+                                        Value="#F0F0F0" />
                                 <Style.Triggers>
-                                    <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Playing">
-                                        <Setter Property="BackgroundColor" Value="#7A75FF" />
+                                    <DataTrigger TargetType="Border"
+                                                 Binding="{Binding CurrentFilter}"
+                                                 Value="Playing">
+                                        <Setter Property="BackgroundColor"
+                                                Value="#7A75FF" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Playing"/>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}"
+                                                  CommandParameter="Playing" />
                         </Border.GestureRecognizers>
-                        <Label Text="▶️" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="▶️"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
                     </Border>
-                    <Label Text="Playing" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
+                    <Label Text="Playing"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center">
                         <Label.Style>
                             <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#777" />
+                                <Setter Property="TextColor"
+                                        Value="#777" />
                                 <Style.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Playing">
-                                        <Setter Property="TextColor" Value="Black" />
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding CurrentFilter}"
+                                                 Value="Playing">
+                                        <Setter Property="TextColor"
+                                                Value="Black" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -85,30 +156,51 @@
                     </Label>
                 </VerticalStackLayout>
 
+
+                <!-- Filter: Completed -->
+                <!-- Same logic -->
                 <VerticalStackLayout Spacing="8">
-                    <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
+                    <Border StrokeShape="RoundRectangle 25"
+                            WidthRequest="55"
+                            HeightRequest="55"
+                            Stroke="Transparent">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BackgroundColor" Value="#F0F0F0" />
+                                <Setter Property="BackgroundColor"
+                                        Value="#F0F0F0" />
                                 <Style.Triggers>
-                                    <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Completed">
-                                        <Setter Property="BackgroundColor" Value="#7A75FF" />
+                                    <DataTrigger TargetType="Border"
+                                                 Binding="{Binding CurrentFilter}"
+                                                 Value="Completed">
+                                        <Setter Property="BackgroundColor"
+                                                Value="#7A75FF" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Completed"/>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}"
+                                                  CommandParameter="Completed" />
                         </Border.GestureRecognizers>
-                        <Label Text="✅" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="✅"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
                     </Border>
-                    <Label Text="Completed" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
+                    <Label Text="Completed"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center">
                         <Label.Style>
                             <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#777" />
+                                <Setter Property="TextColor"
+                                        Value="#777" />
                                 <Style.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Completed">
-                                        <Setter Property="TextColor" Value="Black" />
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding CurrentFilter}"
+                                                 Value="Completed">
+                                        <Setter Property="TextColor"
+                                                Value="Black" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -116,30 +208,49 @@
                     </Label>
                 </VerticalStackLayout>
 
+                <!-- Filter: Wishlist (Plan to Play) -->
                 <VerticalStackLayout Spacing="8">
-                    <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
+                    <Border StrokeShape="RoundRectangle 25"
+                            WidthRequest="55"
+                            HeightRequest="55"
+                            Stroke="Transparent">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BackgroundColor" Value="#F0F0F0" />
+                                <Setter Property="BackgroundColor"
+                                        Value="#F0F0F0" />
                                 <Style.Triggers>
-                                    <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Plan to Play">
-                                        <Setter Property="BackgroundColor" Value="#7A75FF" />
+                                    <DataTrigger TargetType="Border"
+                                                 Binding="{Binding CurrentFilter}"
+                                                 Value="Plan to Play">
+                                        <Setter Property="BackgroundColor"
+                                                Value="#7A75FF" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Plan to Play"/>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}"
+                                                  CommandParameter="Plan to Play" />
                         </Border.GestureRecognizers>
-                        <Label Text="📌" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="📌"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
                     </Border>
-                    <Label Text="Wishlist" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
+                    <Label Text="Wishlist"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center">
                         <Label.Style>
                             <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#777" />
+                                <Setter Property="TextColor"
+                                        Value="#777" />
                                 <Style.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Plan to Play">
-                                        <Setter Property="TextColor" Value="Black" />
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding CurrentFilter}"
+                                                 Value="Plan to Play">
+                                        <Setter Property="TextColor"
+                                                Value="Black" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -150,39 +261,101 @@
             </HorizontalStackLayout>
         </ScrollView>
 
-        <CollectionView Grid.Row="2" ItemsSource="{Binding MyGames}" Margin="15,10,15,20">
+        <!-- Game list grid -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding MyGames}"
+                        Margin="15,10,15,20">
+
+            <!-- 2-column grid layout -->
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="20" />
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 HorizontalItemSpacing="15"
+                                 VerticalItemSpacing="20" />
             </CollectionView.ItemsLayout>
+
+            <!-- Template for each game card -->
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Game">
                     <VerticalStackLayout>
-                        <Border BackgroundColor="White" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1">
+                        <Border BackgroundColor="White"
+                                StrokeShape="RoundRectangle 15"
+                                Stroke="#E0E0E0"
+                                StrokeThickness="1">
                             <Border.Shadow>
-                                <Shadow Brush="#000000" Offset="0,3" Opacity="0.1" Radius="8"/>
+                                <Shadow Brush="#000000"
+                                        Offset="0,3"
+                                        Opacity="0.1"
+                                        Radius="8" />
                             </Border.Shadow>
+                            
+                            <!-- Tap to trigger GameTappedCommand -->
                             <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LibraryViewModel}}, Path=GameTappedCommand}" CommandParameter="{Binding .}" />
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LibraryViewModel}}, Path=GameTappedCommand}"
+                                                      CommandParameter="{Binding .}" />
                             </Border.GestureRecognizers>
 
                             <Grid RowDefinitions="140, Auto">
-                                <Image Grid.Row="0" Source="{Binding BackgroundImage}" Aspect="AspectFill" />
 
-                                <Border Grid.Row="0" HorizontalOptions="End" VerticalOptions="Start" Margin="8" 
-                                        BackgroundColor="#E63946" Stroke="Transparent" StrokeShape="RoundRectangle 8" Padding="8,4">
-                                    <Label Text="{Binding PlayStatus}" TextColor="White" FontSize="10" FontAttributes="Bold"/>
+                                <!-- Game cover image -->
+                                <Image Grid.Row="0"
+                                       Source="{Binding BackgroundImage}"
+                                       Aspect="AspectFill" />
+
+                                <!-- Play status badge -->
+                                <Border Grid.Row="0"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start"
+                                        Margin="8"
+                                        BackgroundColor="#E63946"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 8"
+                                        Padding="8,4">
+                                    <Label Text="{Binding PlayStatus}"
+                                           TextColor="White"
+                                           FontSize="10"
+                                           FontAttributes="Bold" />
                                 </Border>
 
-                                <VerticalStackLayout Grid.Row="1" Padding="12" Spacing="4">
-                                    <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#3A3A4D" FontSize="14" LineBreakMode="TailTruncation" MaxLines="1"/>
+                                <!-- Game info -->
+                                <VerticalStackLayout Grid.Row="1"
+                                                     Padding="12"
+                                                     Spacing="4">
+                                    <Label Text="{Binding Name}"
+                                           FontAttributes="Bold"
+                                           TextColor="#3A3A4D"
+                                           FontSize="14"
+                                           LineBreakMode="TailTruncation"
+                                           MaxLines="1" />
 
-                                    <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
-                                        <Label Text="⭐" FontSize="11" VerticalOptions="Center"/>
-                                        <Label Text="{Binding Rating}" TextColor="#777" FontSize="11" VerticalOptions="Center"/>
-                                        <Label Text="|" TextColor="#777" FontSize="11" VerticalOptions="Center"/>
-                                        <Label Text="Prog: " TextColor="#777" FontSize="11" VerticalOptions="Center"/>
-                                        <Label Text="{Binding Progress}" TextColor="#7A75FF" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
-                                        <Label Text="%" TextColor="#7A75FF" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <!-- Rating and progress -->
+                                    <HorizontalStackLayout Spacing="5"
+                                                           VerticalOptions="Center">
+                                        <Label Text="⭐"
+                                               FontSize="11"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding Rating}"
+                                               TextColor="#777"
+                                               FontSize="11"
+                                               VerticalOptions="Center" />
+                                        <Label Text="|"
+                                               TextColor="#777"
+                                               FontSize="11"
+                                               VerticalOptions="Center" />
+                                        <Label Text="Prog: "
+                                               TextColor="#777"
+                                               FontSize="11"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding Progress}"
+                                               TextColor="#7A75FF"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               VerticalOptions="Center" />
+                                        <Label Text="%"
+                                               TextColor="#7A75FF"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                             </Grid>

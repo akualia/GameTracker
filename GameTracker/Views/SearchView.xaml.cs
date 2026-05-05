@@ -7,6 +7,6 @@ public partial class SearchView : ContentPage
     public SearchView(SearchViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = viewModel; // บอกว่าหน้านี้จะใช้ข้อมูลจาก ViewModel นี้
+        BindingContext = viewModel;
     }
 }

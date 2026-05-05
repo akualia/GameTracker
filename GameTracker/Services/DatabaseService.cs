@@ -7,21 +7,21 @@ namespace GameTracker.Services
     {
         private SQLiteAsyncConnection _database;
 
-        // ฟังก์ชันสำหรับตั้งค่าและเปิดฐานข้อมูล
+        // Initializes and opens the database connection
         async Task Init()
         {
             if (_database is not null)
                 return;
 
-            // กำหนดที่อยู่ไฟล์ฐานข้อมูลในเครื่องมือถือ
+            // Define the local database file path on the device
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, "GameTracker.db3");
             _database = new SQLiteAsyncConnection(dbPath);
 
-            // สร้างตารางเก็บข้อมูลเกมอิงตาม Model ที่เราสร้างไว้ตอนแรก
+            // --- CRUD operations (Create, Read, Update, Delete) ---
             await _database.CreateTableAsync<Game>();
         }
 
-        // --- คำสั่ง ดึงข้อมูล เพิ่มข้อมูล และ ลบข้อมูล ---
+        // Retrieve all saved games
 
         public async Task<List<Game>> GetGamesAsync()
         {
@@ -29,21 +29,25 @@ namespace GameTracker.Services
             return await _database.Table<Game>().ToListAsync();
         }
 
+        // Insert a new game or update it if it already exists
         public async Task<int> SaveGameAsync(Game game)
         {
             await Init();
-            // ถ้าเกมนี้มีอยู่ในฐานข้อมูลแล้ว ให้อัปเดต ถ้ายังไม่มี ให้สร้างใหม่
+            // Check if the game already exists in the database
             var existingGame = await _database.Table<Game>().Where(x => x.Id == game.Id).FirstOrDefaultAsync();
             if (existingGame != null)
             {
+                // Update existing record
                 return await _database.UpdateAsync(game);
             }
             else
             {
+                // Insert new record
                 return await _database.InsertAsync(game);
             }
         }
 
+        // Delete a game from the database
         public async Task<int> DeleteGameAsync(Game game)
         {
             await Init();

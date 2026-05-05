@@ -6,14 +6,20 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="#FFFFFF">
 
+    <!-- Scrollable container -->
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
 
+            <!-- Page title -->
             <Label Text="สรุปสถิติการเล่นเกม" FontSize="24" FontAttributes="Bold" TextColor="#3A3A4D" HorizontalOptions="Center" Margin="0,0,0,20" />
 
+            <!-- Stats grid (2x2 layout) -->
             <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *" RowSpacing="15" ColumnSpacing="15">
 
+                <!-- Total Games card -->
                 <Border Grid.Row="0" Grid.Column="0" BackgroundColor="#F9F9FB" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1" Padding="20">
+
+                    <!-- Card shadow -->
                     <Border.Shadow>
                         <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
                     </Border.Shadow>
@@ -24,6 +30,7 @@
                     </VerticalStackLayout>
                 </Border>
 
+                <!-- Playing Games card -->
                 <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#F9F9FB" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1" Padding="20">
                     <Border.Shadow>
                         <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
@@ -35,6 +42,7 @@
                     </VerticalStackLayout>
                 </Border>
 
+                <!-- Completed Games card -->
                 <Border Grid.Row="1" Grid.Column="0" BackgroundColor="#F9F9FB" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1" Padding="20">
                     <Border.Shadow>
                         <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
@@ -46,6 +54,7 @@
                     </VerticalStackLayout>
                 </Border>
 
+                <!-- Average Rating card -->
                 <Border Grid.Row="1" Grid.Column="1" BackgroundColor="#F9F9FB" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1" Padding="20">
                     <Border.Shadow>
                         <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>

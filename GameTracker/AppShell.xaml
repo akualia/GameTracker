@@ -5,21 +5,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:GameTracker"
     xmlns:views="clr-namespace:GameTracker.Views"
+    
     Shell.FlyoutBehavior="Disabled"
     
     Shell.TabBarBackgroundColor="#FFFFFF" 
     Shell.TabBarTitleColor="#7A75FF" 
     Shell.TabBarUnselectedColor="#B0B0C3">
 
+    <!-- Bottom tab navigation -->
     <TabBar>
+
+        <!-- Home tab -->
         <Tab Title="Home" Icon="icon_home.png">
             <ShellContent ContentTemplate="{DataTemplate views:HomeView}" />
         </Tab>
 
+        <!-- Library tab -->
         <Tab Title="Library" Icon="icon_library.png">
             <ShellContent ContentTemplate="{DataTemplate views:LibraryView}" />
         </Tab>
 
+        <!-- Stats tab -->
         <Tab Title="Stats" Icon="icon_stats.png">
             <ShellContent ContentTemplate="{DataTemplate views:StatsView}" />
         </Tab>

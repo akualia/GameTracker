@@ -6,17 +6,23 @@ public partial class StatsView : ContentPage
 {
     private readonly StatsViewModel _viewModel;
 
+    // Constructor with dependency injection of StatsViewModel
     public StatsView(StatsViewModel viewModel)
     {
         InitializeComponent();
         _viewModel = viewModel;
+
+        // Set BindingContext for data binding in XAML
         BindingContext = _viewModel;
     }
 
-    // ฟังก์ชันนี้จะทำงานทุกครั้งที่ผู้ใช้เปิดหน้านี้ขึ้นมา
+
+    // Called when the page appears on screen
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        // Load statistics data when the page becomes visible
         await _viewModel.LoadStatsAsync();
     }
 }

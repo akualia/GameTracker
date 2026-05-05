@@ -8,7 +8,7 @@ namespace GameTracker.Models
 {
     public class Game
     {
-        // --- ข้อมูลที่ได้มาจาก RAWG API ---
+        // --- Data retrieved from the RAWG API ---
 
         [PrimaryKey]
         [JsonPropertyName("id")]
@@ -23,7 +23,7 @@ namespace GameTracker.Models
         [JsonPropertyName("rating")]
         public double Rating { get; set; }
 
-        // --- ข้อมูลสำหรับบันทึกในแอปของเราเอง (Local Data) ---
+        // --- Local app-specific data (stored on device) ---
 
         public string Platform { get; set; }
         public int Progress { get; set; }
@@ -33,6 +33,8 @@ namespace GameTracker.Models
 
     public class GameResponse
     {
+        // Represents the API response structure containing a list of games
+
         [JsonPropertyName("results")]
         public List<Game> Results { get; set; }
     }

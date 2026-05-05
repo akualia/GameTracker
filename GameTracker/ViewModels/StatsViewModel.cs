@@ -13,24 +13,28 @@ namespace GameTracker.ViewModels
         private int _completedGames;
         private double _averageRating;
 
+        // Total number of games in the library
         public int TotalGames
         {
             get => _totalGames;
             set { _totalGames = value; OnPropertyChanged(nameof(TotalGames)); }
         }
 
+        // Number of games currently being played
         public int PlayingGames
         {
             get => _playingGames;
             set { _playingGames = value; OnPropertyChanged(nameof(PlayingGames)); }
         }
 
+        // Number of completed games
         public int CompletedGames
         {
             get => _completedGames;
             set { _completedGames = value; OnPropertyChanged(nameof(CompletedGames)); }
         }
 
+        // Average rating of all games
         public double AverageRating
         {
             get => _averageRating;
@@ -42,7 +46,7 @@ namespace GameTracker.ViewModels
             _databaseService = databaseService;
         }
 
-        // ฟังก์ชันสำหรับคำนวณสถิติ
+        // Calculates statistics based on stored games
         public async Task LoadStatsAsync()
         {
             var games = await _databaseService.GetGamesAsync();
@@ -53,12 +57,12 @@ namespace GameTracker.ViewModels
                 PlayingGames = games.Count(g => g.PlayStatus == "Playing");
                 CompletedGames = games.Count(g => g.PlayStatus == "Completed");
 
-                // หาค่าเฉลี่ยของเรตติ้ง 
+                // Calculate average rating (rounded to 1 decimal place)
                 AverageRating = Math.Round(games.Average(g => g.Rating), 1);
             }
             else
             {
-                // ถ้ายังไม่มีเกมเลย ให้เซ็ตเป็น 0
+                // Set all values to 0 if no games exist
                 TotalGames = 0;
                 PlayingGames = 0;
                 CompletedGames = 0;
@@ -66,6 +70,7 @@ namespace GameTracker.ViewModels
             }
         }
 
+        // Notifies UI when a property value changes
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

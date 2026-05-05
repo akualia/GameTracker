@@ -5,9 +5,13 @@
              Shell.NavBarIsVisible="False" 
              BackgroundColor="#FFFFFF">
 
+    <!-- Main layout grid -->
     <Grid RowDefinitions="Auto, Auto, *" Padding="15,20,15,0">
 
+        <!-- Header section with back button and title -->
         <Grid Grid.Row="0" ColumnDefinitions="Auto, *" Margin="0,0,0,20">
+
+            <!-- Back button -->
             <Border Grid.Column="0" StrokeShape="RoundRectangle 25" WidthRequest="50" HeightRequest="50" BackgroundColor="White" Stroke="Transparent" VerticalOptions="Center">
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoBackCommand}" />
@@ -15,11 +19,15 @@
                 <Label Text="←" FontSize="24" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
             </Border>
 
+            <!-- Page title -->
             <Label Grid.Column="1" Text="Searching" FontSize="28" FontAttributes="Bold" TextColor="#3A3A4D" VerticalOptions="Center" HorizontalOptions="Center" Margin="-50,0,0,0"/>
         </Grid>
 
+        <!-- Search input -->
         <Border Grid.Row="1" StrokeShape="RoundRectangle 10" BackgroundColor="White" Stroke="Transparent" Padding="15,5" Margin="0,0,0,15">
             <Grid ColumnDefinitions="*, Auto">
+
+                <!-- Text input for search query -->
                 <Entry Grid.Column="0" 
                        Placeholder="ค้นหาเกม..." 
                        Text="{Binding SearchQuery}" 
@@ -28,6 +36,7 @@
                        BackgroundColor="Transparent" 
                        ClearButtonVisibility="WhileEditing"/>
 
+                <!-- Search icon button -->
                 <Label Grid.Column="1" Text="🔍" FontSize="20" VerticalOptions="Center" TextColor="Gray">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SearchCommand}" />
@@ -36,23 +45,35 @@
             </Grid>
         </Border>
 
+        <!-- Loading indicator -->
         <ActivityIndicator Grid.Row="2" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Start" Color="#7A75FF" Margin="0,20,0,0"/>
 
+        <!-- Search results list -->
         <CollectionView Grid.Row="2" 
                         ItemsSource="{Binding SearchResults}" 
                         SelectionMode="Single"
                         SelectionChangedCommand="{Binding GameTappedCommand}"
                         SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+
+            <!-- Grid layout for items -->
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="20" />
             </CollectionView.ItemsLayout>
+
+            <!-- Template for each game item -->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout>
+
+                        <!-- Game image -->
                         <Border StrokeShape="RoundRectangle 10" Stroke="Transparent" HeightRequest="130">
                             <Image Source="{Binding BackgroundImage}" Aspect="AspectFill" />
                         </Border>
+
+                        <!-- Game name -->
                         <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#3A3A4D" Margin="0,8,0,2" LineBreakMode="TailTruncation" MaxLines="1"/>
+
+                        <!-- Placeholder subtitle (can be replaced with real data) -->
                         <Label Text="45 MIN • RECENTLY PLAYED" FontSize="9" TextColor="#A0A0B3" LineBreakMode="TailTruncation"/>
                     </VerticalStackLayout>
                 </DataTemplate>

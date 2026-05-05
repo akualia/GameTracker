@@ -8,7 +8,8 @@ using System.Windows.Input;
 
 namespace GameTracker.ViewModels
 {
-    // QueryProperty เป็นการบอกว่าถ้านำทางมาหน้านี้พร้อมแนบคีย์ "Game" มา ให้เอามาใส่ในตัวแปร SelectedGame
+    // Indicates that when navigating to this page with a "Game" parameter,
+    // it will be assigned to the SelectedGame property
     [QueryProperty(nameof(SelectedGame), "Game")]
     public class GameDetailViewModel : INotifyPropertyChanged
     {
@@ -25,9 +26,10 @@ namespace GameTracker.ViewModels
             }
         }
 
-        // คำสั่งสำหรับปุ่ม Add to Library (เดี๋ยวเราจะมาเขียนระบบเซฟลง Database ทีหลัง)
+        // Command for adding a game to the local library
         public ICommand AddToLibraryCommand { get; }
-        // รับ DatabaseService เข้ามาตอนสร้างคลาส
+
+        // Constructor with dependency injection of DatabaseService
         public GameDetailViewModel(DatabaseService databaseService)
         {
             _databaseService = databaseService;
@@ -35,20 +37,25 @@ namespace GameTracker.ViewModels
             GoBackCommand = new Command(async () => await Shell.Current.GoToAsync(".."));
         }
 
+        // Command for navigating back to the previous page
         public ICommand GoBackCommand { get; }
+
+        // Saves the selected game to the local database
         private async Task SaveGameToLibrary()
         {
             if (SelectedGame == null) return;
 
-            // สั่งเซฟเกมลง Database
+            // Save game to database
             await _databaseService.SaveGameAsync(SelectedGame);
 
-            // แจ้งเตือนผู้ใช้แล้วเด้งกลับหน้าเดิม
+            // Notify user and navigate back
             await App.Current.MainPage.DisplayAlert("สำเร็จ", $"เพิ่ม {SelectedGame.Name} ลงในคลังเรียบร้อย!", "ตกลง");
             await Shell.Current.GoToAsync("..");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        // Notifies UI when a property value changes
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

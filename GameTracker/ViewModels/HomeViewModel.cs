@@ -9,21 +9,24 @@ namespace GameTracker.ViewModels
     {
         private readonly DatabaseService _databaseService;
 
-        // รายการเกมที่จะเอาไปโชว์ในหน้าจอ
+        // Collections used to display games on the home screen
         public ObservableCollection<Game> NowPlayingGames { get; set; } = new();
         public ObservableCollection<Game> RecentlyAddedGames { get; set; } = new();
 
-        // คำสั่งเมื่อกดช่องค้นหา
+        // Command triggered when tapping the search bar
         public ICommand GoToSearchCommand { get; }
+
+        // Command triggered when selecting a game
         public ICommand SelectGameCommand { get; }
 
         public HomeViewModel(DatabaseService databaseService)
         {
             _databaseService = databaseService;
 
-
+            // Navigate to SearchView
             GoToSearchCommand = new Command(async () => await Shell.Current.GoToAsync(nameof(Views.SearchView)));
 
+            // Navigate to GameDetailView with selected game as parameter
             SelectGameCommand = new Command<Game>(async (game) =>
             {
                 if (game == null) return;
@@ -36,6 +39,7 @@ namespace GameTracker.ViewModels
             });
         }
 
+        // Loads data from the database and updates UI collections
         public async Task LoadDataAsync()
         {
             var allGames = await _databaseService.GetGamesAsync();
@@ -45,11 +49,11 @@ namespace GameTracker.ViewModels
 
             if (allGames != null && allGames.Any())
             {
-                // 1. ดึงเฉพาะเกมที่มีสถานะ "Playing"
+                // Get only games with "Playing" status
                 var playing = allGames.Where(g => g.PlayStatus == "Playing").ToList();
                 foreach (var g in playing) NowPlayingGames.Add(g);
 
-                // 2. ดึงเกมที่เพิ่งเพิ่มล่าสุด 
+                // Get most recently added games (top 5 by Id)
                 var recent = allGames.OrderByDescending(g => g.Id).Take(5).ToList();
                 foreach (var g in recent) RecentlyAddedGames.Add(g);
             }
