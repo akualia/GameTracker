@@ -1,0 +1,8 @@
+# Build
+GameTracker/bin/
+GameTracker/obj/
+
+# VS
+.vs/
+*.user
+*.suo
