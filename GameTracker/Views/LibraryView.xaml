@@ -6,17 +6,17 @@
              x:Class="GameTracker.Views.LibraryView"
              x:DataType="viewmodels:LibraryViewModel"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#06142E">
+             BackgroundColor="#FFFFFF">
 
     <Grid RowDefinitions="Auto, Auto, *">
 
-        <Border Grid.Row="0" BackgroundColor="#0A1C40" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,30,30" Padding="20,40,20,25">
+        <Border Grid.Row="0" BackgroundColor="#F9F9FB" Stroke="#F0F0F0" StrokeThickness="1" StrokeShape="RoundRectangle 0,0,30,30" Padding="20,40,20,25">
             <Border.Shadow>
-                <Shadow Brush="#000000" Offset="0,5" Opacity="0.3" Radius="10"/>
+                <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
             </Border.Shadow>
             <VerticalStackLayout Spacing="5">
-                <Label Text="🌙 My Library" FontSize="32" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
-                <Label Text="คลังแสงส่วนตัว จัดการเกมที่คุณรัก" FontSize="14" TextColor="#A0AABF" HorizontalOptions="Center"/>
+                <Label Text="🌙 My Library" FontSize="32" FontAttributes="Bold" TextColor="#3A3A4D" HorizontalOptions="Center"/>
+                <Label Text="คลังแสงส่วนตัว จัดการเกมที่คุณรัก" FontSize="14" TextColor="#A0A0B3" HorizontalOptions="Center"/>
             </VerticalStackLayout>
         </Border>
 
@@ -27,7 +27,7 @@
                     <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BackgroundColor" Value="#223359" />
+                                <Setter Property="BackgroundColor" Value="#F0F0F0" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="All">
                                         <Setter Property="BackgroundColor" Value="#7A75FF" />
@@ -43,7 +43,7 @@
                     <Label Text="All" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
                         <Label.Style>
                             <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#A0AABF" />
+                                <Setter Property="TextColor" Value="#777" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="All">
                                         <Setter Property="TextColor" Value="White" />
@@ -58,7 +58,7 @@
                     <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BackgroundColor" Value="#223359" />
+                                <Setter Property="BackgroundColor" Value="#F0F0F0" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Playing">
                                         <Setter Property="BackgroundColor" Value="#7A75FF" />
@@ -74,7 +74,7 @@
                     <Label Text="Playing" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
                         <Label.Style>
                             <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#A0AABF" />
+                                <Setter Property="TextColor" Value="#777" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Playing">
                                         <Setter Property="TextColor" Value="White" />
@@ -89,7 +89,7 @@
                     <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BackgroundColor" Value="#223359" />
+                                <Setter Property="BackgroundColor" Value="#F0F0F0" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Completed">
                                         <Setter Property="BackgroundColor" Value="#7A75FF" />
@@ -105,7 +105,7 @@
                     <Label Text="Completed" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
                         <Label.Style>
                             <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#A0AABF" />
+                                <Setter Property="TextColor" Value="#777" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Completed">
                                         <Setter Property="TextColor" Value="White" />
@@ -120,7 +120,7 @@
                     <Border StrokeShape="RoundRectangle 25" WidthRequest="55" HeightRequest="55" Stroke="Transparent">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BackgroundColor" Value="#223359" />
+                                <Setter Property="BackgroundColor" Value="#F0F0F0" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Border" Binding="{Binding CurrentFilter}" Value="Plan to Play">
                                         <Setter Property="BackgroundColor" Value="#7A75FF" />
@@ -136,7 +136,7 @@
                     <Label Text="Wishlist" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center">
                         <Label.Style>
                             <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#A0AABF" />
+                                <Setter Property="TextColor" Value="#777" />
                                 <Style.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding CurrentFilter}" Value="Plan to Play">
                                         <Setter Property="TextColor" Value="White" />
@@ -157,9 +157,9 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Game">
                     <VerticalStackLayout>
-                        <Border BackgroundColor="#11224D" StrokeShape="RoundRectangle 15" Stroke="#1B3066" StrokeThickness="1">
+                        <Border BackgroundColor="White" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1">
                             <Border.Shadow>
-                                <Shadow Brush="#000000" Offset="0,6" Opacity="0.4" Radius="10"/>
+                                <Shadow Brush="#000000" Offset="0,3" Opacity="0.1" Radius="8"/>
                             </Border.Shadow>
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LibraryViewModel}}, Path=GameTappedCommand}" CommandParameter="{Binding .}" />
@@ -174,15 +174,15 @@
                                 </Border>
 
                                 <VerticalStackLayout Grid.Row="1" Padding="12" Spacing="4">
-                                    <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="White" FontSize="14" LineBreakMode="TailTruncation" MaxLines="1"/>
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#3A3A4D" FontSize="14" LineBreakMode="TailTruncation" MaxLines="1"/>
 
                                     <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
                                         <Label Text="⭐" FontSize="11" VerticalOptions="Center"/>
-                                        <Label Text="{Binding Rating}" TextColor="#A0AABF" FontSize="11" VerticalOptions="Center"/>
-                                        <Label Text="|" TextColor="#A0AABF" FontSize="11" VerticalOptions="Center"/>
-                                        <Label Text="Prog: " TextColor="#A0AABF" FontSize="11" VerticalOptions="Center"/>
-                                        <Label Text="{Binding Progress}" TextColor="#00FF7F" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
-                                        <Label Text="%" TextColor="#00FF7F" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Rating}" TextColor="#777" FontSize="11" VerticalOptions="Center"/>
+                                        <Label Text="|" TextColor="#777" FontSize="11" VerticalOptions="Center"/>
+                                        <Label Text="Prog: " TextColor="#777" FontSize="11" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Progress}" TextColor="#7A75FF" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
+                                        <Label Text="%" TextColor="#7A75FF" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                             </Grid>

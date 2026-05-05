@@ -4,43 +4,55 @@
              x:Class="GameTracker.Views.StatsView"
              Title="My Stats"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#0D1B2A">
+             BackgroundColor="#FFFFFF">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
 
-            <Label Text="สรุปสถิติการเล่นเกม" FontSize="24" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" Margin="0,0,0,20" />
+            <Label Text="สรุปสถิติการเล่นเกม" FontSize="24" FontAttributes="Bold" TextColor="#3A3A4D" HorizontalOptions="Center" Margin="0,0,0,20" />
 
             <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *" RowSpacing="15" ColumnSpacing="15">
 
-                <Border Grid.Row="0" Grid.Column="0" BackgroundColor="#1B263B" StrokeShape="RoundRectangle 15" Stroke="Transparent" Padding="20">
+                <Border Grid.Row="0" Grid.Column="0" BackgroundColor="#F9F9FB" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1" Padding="20">
+                    <Border.Shadow>
+                        <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
+                    </Border.Shadow>
                     <VerticalStackLayout HorizontalOptions="Center">
                         <Label Text="🎮" FontSize="30" HorizontalOptions="Center"/>
-                        <Label Text="Total Games" TextColor="LightGray" FontSize="14" HorizontalOptions="Center"/>
-                        <Label Text="{Binding TotalGames}" TextColor="White" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        <Label Text="Total Games" TextColor="#777" FontSize="14" HorizontalOptions="Center"/>
+                        <Label Text="{Binding TotalGames}" TextColor="#3A3A4D" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 
-                <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#1B263B" StrokeShape="RoundRectangle 15" Stroke="Transparent" Padding="20">
+                <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#F9F9FB" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1" Padding="20">
+                    <Border.Shadow>
+                        <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
+                    </Border.Shadow>
                     <VerticalStackLayout HorizontalOptions="Center">
                         <Label Text="🔥" FontSize="30" HorizontalOptions="Center"/>
-                        <Label Text="Playing" TextColor="LightGray" FontSize="14" HorizontalOptions="Center"/>
+                        <Label Text="Playing" TextColor="#777" FontSize="14" HorizontalOptions="Center"/>
                         <Label Text="{Binding PlayingGames}" TextColor="#FFA500" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="0" BackgroundColor="#1B263B" StrokeShape="RoundRectangle 15" Stroke="Transparent" Padding="20">
+                <Border Grid.Row="1" Grid.Column="0" BackgroundColor="#F9F9FB" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1" Padding="20">
+                    <Border.Shadow>
+                        <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
+                    </Border.Shadow>
                     <VerticalStackLayout HorizontalOptions="Center">
                         <Label Text="✅" FontSize="30" HorizontalOptions="Center"/>
-                        <Label Text="Completed" TextColor="LightGray" FontSize="14" HorizontalOptions="Center"/>
-                        <Label Text="{Binding CompletedGames}" TextColor="#00FF7F" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        <Label Text="Completed" TextColor="#777" FontSize="14" HorizontalOptions="Center"/>
+                        <Label Text="{Binding CompletedGames}" TextColor="#7A75FF" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="1" BackgroundColor="#1B263B" StrokeShape="RoundRectangle 15" Stroke="Transparent" Padding="20">
+                <Border Grid.Row="1" Grid.Column="1" BackgroundColor="#F9F9FB" StrokeShape="RoundRectangle 15" Stroke="#E0E0E0" StrokeThickness="1" Padding="20">
+                    <Border.Shadow>
+                        <Shadow Brush="#000000" Offset="0,3" Opacity="0.05" Radius="5"/>
+                    </Border.Shadow>
                     <VerticalStackLayout HorizontalOptions="Center">
                         <Label Text="⭐" FontSize="30" HorizontalOptions="Center"/>
-                        <Label Text="Avg Rating" TextColor="LightGray" FontSize="14" HorizontalOptions="Center"/>
+                        <Label Text="Avg Rating" TextColor="#777" FontSize="14" HorizontalOptions="Center"/>
                         <Label Text="{Binding AverageRating}" TextColor="#FFD700" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>

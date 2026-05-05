@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameTracker.Views.SearchView"
              Shell.NavBarIsVisible="False" 
-             BackgroundColor="#06142E">
+             BackgroundColor="#FFFFFF">
 
     <Grid RowDefinitions="Auto, Auto, *" Padding="15,20,15,0">
 
@@ -15,7 +15,7 @@
                 <Label Text="←" FontSize="24" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
             </Border>
 
-            <Label Grid.Column="1" Text="Searching" FontSize="28" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Margin="-50,0,0,0"/>
+            <Label Grid.Column="1" Text="Searching" FontSize="28" FontAttributes="Bold" TextColor="#3A3A4D" VerticalOptions="Center" HorizontalOptions="Center" Margin="-50,0,0,0"/>
         </Grid>
 
         <Border Grid.Row="1" StrokeShape="RoundRectangle 10" BackgroundColor="White" Stroke="Transparent" Padding="15,5" Margin="0,0,0,15">
@@ -36,7 +36,7 @@
             </Grid>
         </Border>
 
-        <ActivityIndicator Grid.Row="2" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Start" Color="White" Margin="0,20,0,0"/>
+        <ActivityIndicator Grid.Row="2" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Start" Color="#7A75FF" Margin="0,20,0,0"/>
 
         <CollectionView Grid.Row="2" 
                         ItemsSource="{Binding SearchResults}" 
@@ -52,8 +52,8 @@
                         <Border StrokeShape="RoundRectangle 10" Stroke="Transparent" HeightRequest="130">
                             <Image Source="{Binding BackgroundImage}" Aspect="AspectFill" />
                         </Border>
-                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="White" Margin="0,8,0,2" LineBreakMode="TailTruncation" MaxLines="1"/>
-                        <Label Text="45 MIN • RECENTLY PLAYED" FontSize="9" TextColor="#888" LineBreakMode="TailTruncation"/>
+                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#3A3A4D" Margin="0,8,0,2" LineBreakMode="TailTruncation" MaxLines="1"/>
+                        <Label Text="45 MIN • RECENTLY PLAYED" FontSize="9" TextColor="#A0A0B3" LineBreakMode="TailTruncation"/>
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
