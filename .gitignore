@@ -4,5 +4,6 @@ GameTracker/obj/
 
 # VS
 .vs/
+.vscode/
 *.user
 *.suo
