@@ -73,8 +73,6 @@
                         <!-- Game name -->
                         <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#3A3A4D" Margin="0,8,0,2" LineBreakMode="TailTruncation" MaxLines="1"/>
 
-                        <!-- Placeholder subtitle (can be replaced with real data) -->
-                        <Label Text="45 MIN • RECENTLY PLAYED" FontSize="9" TextColor="#A0A0B3" LineBreakMode="TailTruncation"/>
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
